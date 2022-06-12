@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="is-dark" style="background-color:#212529;">
     <head>
         <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
         <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
@@ -7,15 +7,15 @@
             * {
                 font-family: "Press Start 2P";
             }
+            body {
+                background-color: #212529;
+            }
             main {
                 display: flex;
                 flex-flow: column;
                 justify-content: center;
                 align-items: center;
                 width: 100%;
-            }
-            #result-table {
-                
             }
             .forty-five {
                 height: 275px;
@@ -45,11 +45,14 @@
                 margin-left: 2.5px;
                 margin-right: 2.5px;
             }
+            .total-weight {
+                text-align: center;
+            }
         </style>
     </head>
     <body>
         <haeder style="text-align: center;">
-            <h1>
+            <h1 class="is-primary nes-text">
                 Barbell Calculator
             </h1>
         </haeder>
@@ -57,13 +60,11 @@
             <button
                 type="button"
                 class="nes-btn is-primary"
-                onclick="document.getElementById('dialog-default').showModal();"
-                style="margin-bottom: 5px;"
                 id="dialog-button"
             >
-                Open dialog
-              </button>
-              <dialog class="nes-dialog" id="dialog-default">
+                Settings
+            </button>
+              <dialog class="nes-dialog is-dark" id="dialog-default">
                 <form method="dialog" id="settings-form">
                   <p class="title">Settings</p>
                   <div class="nes-field">
@@ -80,7 +81,7 @@
                   </menu>
                 </form>
               </dialog>
-            <table id="result-table" class="nes-table is-bordered is-centered" style="margin-bottom:15px;">
+            <table id="result-table" class="nes-table is-bordered is-centered is-dark" style="margin-bottom:15px;">
                 <thead>
                     <tr>
                         <th>

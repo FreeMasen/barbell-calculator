@@ -28,8 +28,10 @@ const MAX_INPUT = FORM.querySelector("#max");
 const SAVE_BUTTON = document.getElementById("save-settings");
 
 DIALOG_BUTTON.addEventListener("click", () => {
+    console.log("clicked settings");
     MIN_INPUT.value = +(localStorage.getItem(START_KEY) || 45);
     MAX_INPUT.value = +(localStorage.getItem(END_KEY) || 45);
+    document.getElementById('dialog-default').showModal();
 });
 
 SAVE_BUTTON.addEventListener("click", () => {
@@ -75,7 +77,7 @@ function generate_row(weight) {
 function generate_weight_cell(weight) {
     let ret = document.createElement("td");
     ret.appendChild(document.createTextNode(weight));
-    ret.classList.add("total-wieght");
+    ret.classList.add("total-weight");
     return ret;
 }
 
