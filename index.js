@@ -130,10 +130,4 @@ function generate_plate_cell(weight) {
     return ret;
 }
 
-function format_plates(plates) {
-    return plates.reduce((acc, ele) => {
-
-    })
-}
-
 setup_initial();
