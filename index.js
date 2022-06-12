@@ -1,6 +1,8 @@
 const START_KEY = "starting-weight";
 const END_KEY = "ending-weight";
+const THIRTY_FIVE_KEY = "include-35";
 const DISABLED_CLASS = "is-disabled";
+let testing = false;
 
 /**
  * @type HTMLTableElement
@@ -26,6 +28,10 @@ const MAX_INPUT = FORM.querySelector("#max");
  * @type HTMLButtonElement
  */
 const SAVE_BUTTON = document.getElementById("save-settings");
+/**
+ * @type HTMLInputElement
+ */
+const INCLUDE_35 = document.getElementById("include-35");
 
 DIALOG_BUTTON.addEventListener("click", () => {
     console.log("clicked settings");
@@ -45,6 +51,12 @@ SAVE_BUTTON.addEventListener("click", () => {
     let new_max = form_data.get("max");
     if (new_max) {
         localStorage.setItem(END_KEY, new_max);
+    }
+    let include_35 = form_data.get(THIRTY_FIVE_KEY);
+    if (include_35) {
+        localStorage.setItem(THIRTY_FIVE_KEY, true);
+    } else {
+        localStorage.setItem(THIRTY_FIVE_KEY, false);
     }
     clear_table();
     setup_initial();
@@ -86,6 +98,7 @@ function generate_weight_cell(weight) {
 function generate_plate_cell(weight) {
     let ret = document.createElement("td");
     ret.classList.add("plates-per-side");
+    let include_35 = JSON.parse(localStorage.getItem(THIRTY_FIVE_KEY));
     if (weight <= 45) {
         return ret;
     }
@@ -106,6 +119,10 @@ function generate_plate_cell(weight) {
         default:
             side.push(`(45x${forty_fives.length})`);
             break;
+    }
+    while (include_35 && target >= 35) {
+        side.push(35);
+        target -= 35;
     }
     while (target >= 25) {
         side.push(25);
@@ -130,7 +147,16 @@ function generate_plate_cell(weight) {
     if (!target == 0) {
         console.warn("missing weights", target);
     }
-    ret.appendChild(document.createTextNode(side.join("+")));
+    let content = side.join("+");
+    if (testing) {
+        let comb = eval(content.replace("x", "*"));
+        let test = (comb * 2) + 45;
+        console.log("Test", test, "Target", weight);
+        if (weight != (comb * 2)+45) {
+            throw new Error(`${comp}*2+45 != ${weight}`);
+        }
+    }
+    ret.appendChild(document.createTextNode(content));
     return ret;
 }
 
