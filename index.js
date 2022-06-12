@@ -31,7 +31,9 @@ DIALOG_BUTTON.addEventListener("click", () => {
     console.log("clicked settings");
     MIN_INPUT.value = +(localStorage.getItem(START_KEY) || 45);
     MAX_INPUT.value = +(localStorage.getItem(END_KEY) || 45);
+    console.log("updated input");
     document.getElementById('dialog-default').showModal();
+    console.log("modal shown");
 });
 
 SAVE_BUTTON.addEventListener("click", () => {

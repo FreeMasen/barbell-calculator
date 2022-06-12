@@ -17,86 +17,49 @@
                 align-items: center;
                 width: 100%;
             }
-            .forty-five {
-                height: 275px;
-                width: 50px;
-            }
-            .twenty-five {
-                height: 225px;
-                width: 45px;
-            }
-            .ten {
-                height: 175px;
-                width: 35px;
-            }
-            .five {
-                height: 150px;
-                width: 30px;
-            }
-            .two-point-five {
-                height: 125px;
-                width: 25px;
-            }
-            .one-point-seven-five {
-                height: 100px;
-                width: 20px;
-            }
-            .plate + .plate {
-                margin-left: 2.5px;
-                margin-right: 2.5px;
-            }
             .total-weight {
                 text-align: center;
+            }
+            #result-table::before {
+                content: none;
             }
         </style>
     </head>
     <body>
-        <haeder style="text-align: center;">
+        <header style="text-align: center">
             <h1 class="is-primary nes-text">
                 Barbell Calculator
             </h1>
-        </haeder>
+            <button class="nes-btn is-primary" id="dialog-button">Settings</button>
+        </header>
         <main>
-            <button
-                type="button"
-                class="nes-btn is-primary"
-                id="dialog-button"
-            >
-                Settings
-            </button>
-              <dialog class="nes-dialog is-dark" id="dialog-default">
-                <form method="dialog" id="settings-form">
-                  <p class="title">Settings</p>
-                  <div class="nes-field">
-                    <label for="min">Min</label>
-                    <input type="number" step="5" id="min" name="min" class="nes-input" min="45">
-                  </div>
-                  <div class="nes-field">
-                    <label for="max">Max</label>
-                    <input type="number" step="5" id="max" name="max" class="nes-input" min="50">
-                  </div>
-                  <menu class="dialog-menu">
-                    <button class="nes-btn">Cancel</button>
-                    <button class="nes-btn is-primary" id="save-settings">Save</button>
-                  </menu>
-                </form>
-              </dialog>
-            <table id="result-table" class="nes-table is-bordered is-centered is-dark" style="margin-bottom:15px;">
+            <table id="result-table" class="nes-table is-bordered is-centered is-dark">
                 <thead>
                     <tr>
-                        <th>
-                            Weight
-                        </th>
-                        <th>
-                            Plates Per Side
-                        </th>
+                        <th>Weight</th>
+                        <th>Plates Per Side</th>
                     </tr>
                 </thead>
-                <tbody>
-
-                </tbody>
+                <tbody></tbody>
             </table>
         </main>
+        <dialog class="nes-dialog is-dark" id="dialog-default">
+            <p class="title">Settings</p>
+            <form method="dialog" id="settings-form">
+                <div class="nes-field">
+                    <label for="min">Min</label>
+                    <input type="number" step="5" id="min" name="min" class="nes-input" min="45">
+                </div>
+                <div class="nes-field">
+                    <label for="max">Max</label>
+                    <input type="number" step="5" id="max" name="max" class="nes-input" min="50">
+                </div>
+                <menu class="dialog-menu">
+                    <button class="nes-btn">Cancel</button>
+                    <button class="nes-btn is-primary" id="save-settings">Save</button>
+                </menu>
+            </form>
+        </dialog>
         <script type="text/javascript" src="index.js"></script>
     </body>
 </html>
