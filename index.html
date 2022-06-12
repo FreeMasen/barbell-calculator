@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+        <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+        <style>
+            * {
+                font-family: "Press Start 2P";
+            }
+            main {
+                display: flex;
+                flex-flow: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+            }
+            #result-table {
+                
+            }
+            .forty-five {
+                height: 275px;
+                width: 50px;
+            }
+            .twenty-five {
+                height: 225px;
+                width: 45px;
+            }
+            .ten {
+                height: 175px;
+                width: 35px;
+            }
+            .five {
+                height: 150px;
+                width: 30px;
+            }
+            .two-point-five {
+                height: 125px;
+                width: 25px;
+            }
+            .one-point-seven-five {
+                height: 100px;
+                width: 20px;
+            }
+            .plate + .plate {
+                margin-left: 2.5px;
+                margin-right: 2.5px;
+            }
+        </style>
+    </head>
+    <body>
+        <haeder style="text-align: center;">
+            <h1>
+                Barbell Calculator
+            </h1>
+        </haeder>
+        <main>
+            <button
+                type="button"
+                class="nes-btn is-primary"
+                onclick="document.getElementById('dialog-default').showModal();"
+                style="margin-bottom: 5px;"
+                id="dialog-button"
+            >
+                Open dialog
+              </button>
+              <dialog class="nes-dialog" id="dialog-default">
+                <form method="dialog" id="settings-form">
+                  <p class="title">Settings</p>
+                  <div class="nes-field">
+                    <label for="min">Min</label>
+                    <input type="number" step="5" id="min" name="min" class="nes-input" min="45">
+                  </div>
+                  <div class="nes-field">
+                    <label for="max">Max</label>
+                    <input type="number" step="5" id="max" name="max" class="nes-input" min="50">
+                  </div>
+                  <menu class="dialog-menu">
+                    <button class="nes-btn">Cancel</button>
+                    <button class="nes-btn is-primary" id="save-settings">Save</button>
+                  </menu>
+                </form>
+              </dialog>
+            <table id="result-table" class="nes-table is-bordered is-centered" style="margin-bottom:15px;">
+                <thead>
+                    <tr>
+                        <th>
+                            Weight
+                        </th>
+                        <th>
+                            Plates Per Side
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </main>
+        <script type="text/javascript" src="index.js"></script>
+    </body>
+</html>
